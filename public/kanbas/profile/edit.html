@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <table cellspacing="30">
+        <tr valign="baseline">
+        <td>
+            <ul>
+                <li> <a href="../account.html">Account</a> </li>
+                <li> <a href="#">Dashboard</a> </li>
+                <li> <a href="../courses.html">Courses</a> </li>
+                <li> <a href="#">Calendar</a> </li>
+                <li> <a href="#">Inbox</a> </li>
+                <li> <a href="#">History</a> </li>
+                <li> <a href="#">Studio</a> </li>
+                <li> <a href="#">Commons</a> </li>
+                <li> <a href="#">Help</a> </li>
+            </ul>
+        </td>
+        <td>
+            <ul>
+                <li> <a href="#">Notifications</a> </li>
+                <li> <a href="index.html">Profile</a> </li>
+                <li> <a href="#">Files</a> </li>
+                <li> <a href="#">Settings</a> </li>
+                <li> <a href="#">ePortfolios</a> </li>
+                <li> <a href="#">Shared Content</a> </li>
+                <li> <a href="#">The Hub</a> </li>
+                <li> <a href="#">Qwickly Course Tools</a> </li>
+                <li> <a href="#">Global Announcements</a> </li>
+            </ul>
+        </td>
+        <td>
+            Justin Wang's Profile <br/> <hr/>
+            <h4> Name:* 
+                <button style="float: right;" type="button" onclick="location.href='index.html'">
+                <i class="fa fa-pencil"></i> Cancel Editing</button> <br/>
+                <input type="text" value="Justin Wang">
+            </h4>
+            <h4> Pronouns: <br/>
+                <select id="select-pronouns">
+                    <option selected value="NONE">None</option>
+                </select>
+            </h4> 
+            <h4> Title: <br/>
+                <input type="text">
+            </h4>
+            <h3>Contact</h3>
+            No registered services, you can add some on the <a href="#" style="text-decoration: none;">settings</a> page.
+            <h3>Biography</h3>
+            <form id="textarea"> 
+                <textarea cols="35" rows="3">Fourth-year Computer Science student.</textarea>
+            </form>  
+            <h3>Links</h3>
+            <ul>
+                <li> <a href="#">YouTube</a> <a href="#" style="text-decoration: none;"><i class="fa fa-external-link"></i> Links to an external site</a></li>
+            </ul>
+            <table width="50%">
+                <thead>
+                <tr>
+                    <th valign="middle">Title</th>
+                    <th></th>
+                    <th valign="middle">URL</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" value="YouTube"></td>
+                        <td>&#8594</td>
+                        <td><input type="text" value="https://www.youtube.com/"></td>
+                        <td><a href="#">Remove</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button">Add another link</button> <br/>
+            <button type="button">Cancel</button>
+            <button type="button">Save Profile</button> <br/>
+            <button type="button">Edit Profile</button>
+            <button type="button" onclick="location.href='index.html'">Cancel Editing </button>
+        </td>
+        </tr>
+    </table>
+</body>
+</html>
