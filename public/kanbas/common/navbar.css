@@ -1,0 +1,64 @@
+.kanbas-red {
+    color: #b30000;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+    height: 100%;
+}
+
+.flex-row-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.col-width-85px {
+    width: 85px;
+}
+
+.kanbas-navbar {
+    position:fixed;
+    height: 100vh;
+    background: black;
+}
+
+.navbar-item,
+.navbar-item-selected {
+    transform: rotate(0); /* for stretched link */
+    background-color: black;
+    height: 65px;
+    font-size: 14px;
+    text-align: center;
+    padding: 5px;
+}
+
+.navbar-item-selected {
+    background-color: white;
+}
+
+.navbar-icon {
+    padding-top: 5px;
+}
+
+.navbar-link,
+.navbar-link-selected {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-link-selected {
+    color: #b30000;
+}
+
+.navbar-link:hover {
+    color: white;
+}
+
+.navbar-link-selected:hover {
+    color: #b30000;
+}

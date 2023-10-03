@@ -1,0 +1,114 @@
+hr.custom-hr{
+    margin-right: 40px;
+}
+
+.profile-header {
+    font-size: 20px;
+}
+
+.profile-info-col {
+    margin-left: 24px;
+    width: 500px;
+}
+
+.profile-name {
+    margin-top: 8px;
+    margin-bottom: 26px;
+    font-size: 30px;
+}
+
+.profile-icon {
+    margin-top: 12px;
+}
+
+.profile-section-title {
+    font-size: 24px;
+}
+
+.profile-section-description {
+    width: 280px;
+    margin-top: 8px;
+    margin-bottom: 24px;
+}
+
+.profile-link {
+    color: #b30000;
+    text-decoration: none;
+}
+
+.profile-link:hover {
+    color: #b30000;
+    text-decoration: underline;
+}
+
+.external-site-button {
+    margin-left: -8px;
+    margin-top: -5px;
+}
+
+.external-site-icon {
+    margin-left: 2px;
+    color: #b30000;
+}
+
+.edit-button {
+    margin-left: auto; 
+    margin-right: 60px;
+    margin-top: 12px;
+}
+
+.edit-button-normal {
+    border-color: #bababa !important;
+}
+
+.edit-button-hover:hover {
+    color: black !important;
+    background-color: #e0e0e0 !important;
+}
+
+.label-header {
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.margin-top-24 {
+    margin-top: 24px;
+}
+
+.margin-top-48 {
+    margin-top: 48px;
+}
+
+.margin-top-5 {
+    margin-top: 5px;
+}
+
+.margin-left-account-menu {
+    margin-left: 110px; /* 25 + width of navbar */
+}
+
+.focus:focus {
+    border-color: #b30000 !important;
+    box-shadow: 0 0 0 0.2rem rgba(179, 0, 0, 0.25) !important;
+}
+
+.save-profile-button {
+    color: white !important;
+    background-color: #b30000 !important;
+}
+
+.arrow-icon {
+    color: black;
+    margin-top: 50px;
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+.x-button {
+    margin-top: 40px;
+    margin-left: -20px;
+}
+
+.label-centered {
+    text-align: center;
+}

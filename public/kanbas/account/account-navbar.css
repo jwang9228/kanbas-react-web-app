@@ -1,0 +1,47 @@
+.account-margin {
+    flex-grow: 1;
+    margin-top: 16px;
+}
+
+.profile-header {
+    font-size: 20px;
+}
+
+.col-width-200px {
+    width: 200px;
+}
+
+.account-menu-item,
+.account-menu-item-selected {
+    transform: rotate(0); /* for stretched link */
+    padding-bottom: 8px;
+    padding-top: 8px;
+    padding-left: 5px;
+}
+
+.account-menu-item-selected {
+    border-left: 0.12rem solid black;
+    line-height: 15px;
+    font-weight: 600;
+    margin-left: -3px;
+}
+
+.account-menu-link,
+.account-menu-link-selected {
+    color: #b30000;
+    text-decoration: none;
+}
+
+.account-menu-link-selected {
+    color: black;
+}
+
+.account-menu-link:hover {
+    color: #b30000;
+    text-decoration: underline;
+}
+
+.account-menu-link-selected:hover {
+    color: black;
+    text-decoration: underline;
+}
