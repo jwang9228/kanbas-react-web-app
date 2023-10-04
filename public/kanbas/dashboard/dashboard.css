@@ -1,0 +1,81 @@
+.light-blue {
+    color: #3a9fbf;
+}
+
+.pastel-green {
+    color: #03c03c
+}
+
+.pastel-pink {
+    color: #D198B7 ;
+}
+
+.pastel-purple {
+    color: #C3B1E1;
+}
+
+.dashboard-margin {
+    flex-grow: 1;
+    margin-top: 14px;
+    margin-left: 120px;
+}
+
+.dashboard-title {
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.card-image {
+    position: relative;
+}
+
+.card-image-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.card-button {
+    margin-left: -10px;
+    margin-bottom: -8px;
+}
+
+.card-width {
+    width: 270px;
+}
+
+.dashboard-courses-margin {
+    margin-left: 10px;
+}
+
+.dashboard-courses-title {
+    font-size: 24px;
+    font-weight: 450;
+}
+
+.dashboard-card-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+
+.dashboard-card-course-num {
+    font-size: 18px;
+    font-weight: 350;
+}
+
+.dashboard-card-course-desc {
+    font-size: 14px;
+    font-weight: 350;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}

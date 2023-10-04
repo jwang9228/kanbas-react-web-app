@@ -1,6 +1,8 @@
 .account-margin {
     flex-grow: 1;
     margin-top: 16px;
+    margin-left: 120px;
+    overflow: hidden;
 }
 
 .profile-header {
