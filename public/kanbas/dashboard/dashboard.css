@@ -18,6 +18,7 @@
     flex-grow: 1;
     margin-top: 14px;
     margin-left: 120px;
+    overflow: hidden;
 }
 
 .dashboard-title {
@@ -56,7 +57,7 @@
 .dashboard-card-title {
     overflow: hidden;
     white-space: nowrap;
-    text-overflow: ellipsis
+    text-overflow: ellipsis;
 }
 
 .dashboard-card-course-num {
@@ -69,7 +70,7 @@
     font-weight: 350;
     overflow: hidden;
     white-space: nowrap;
-    text-overflow: ellipsis
+    text-overflow: ellipsis;
 }
 
 .mb-30 {
@@ -78,4 +79,15 @@
 
 .mt-30 {
     margin-top: 30px;
+}
+
+.card-link {
+    text-decoration: none;
+    color: black;
+}
+
+.card-link:hover {
+    text-decoration: underline;
+    text-decoration-color: #b30000;
+    color: black;
 }

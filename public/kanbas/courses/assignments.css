@@ -1,0 +1,40 @@
+.assignment-search-width {
+    width: 300px !important;
+}
+
+.add-assignment-btn {
+    color: white !important;
+    background-color: #b30000 !important;
+}
+
+.assignment-header {
+    text-decoration: none;
+    color: black !important;
+    font-weight: 500;
+}
+
+.assignment-header:hover {
+    text-decoration: none;
+    color: black !important;
+}
+
+.assignment-hover:hover {
+    background-color: rgba(135, 206, 235, .2);
+}
+
+.assignment-item-left-border {
+    border-left: 4px solid green !important;
+}
+
+.assignment-item-title {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.assignment-item-title:hover {
+    text-decoration: underline;
+}
+
+.checkmark {
+    color: rgba(34,139,34, .6);
+}

@@ -1,0 +1,14 @@
+.default-button {
+    border-color: #bababa !important;
+    background-color:#EDEDED !important;
+}
+
+.default-button:hover {
+    color: black !important;
+    background-color: #e0e0e0 !important;
+}
+
+.focus:focus {
+    border-color: #b30000 !important;
+    box-shadow: 0 0 0 0.2rem rgba(179, 0, 0, 0.25) !important;
+}
