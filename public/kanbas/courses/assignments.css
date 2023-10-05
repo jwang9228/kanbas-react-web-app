@@ -35,6 +35,16 @@
     text-decoration: underline;
 }
 
+.assignment-description {
+    font-size: 14px;
+}
+
 .checkmark {
     color: rgba(34,139,34, .6);
+}
+
+.published-container {
+    display: flex;
+    align-items: center;
+    color: green;
 }
