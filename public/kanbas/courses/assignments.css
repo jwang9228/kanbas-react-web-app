@@ -1,7 +1,3 @@
-.assignment-search-width {
-    width: 300px !important;
-}
-
 .add-assignment-btn {
     color: white !important;
     background-color: #b30000 !important;
@@ -47,4 +43,72 @@
     display: flex;
     align-items: center;
     color: green;
+}
+
+.center-text {
+    vertical-align: middle;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.table-layout {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.table-header {
+    vertical-align: middle;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.table-student-name {
+    color: #b30000 !important;
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.table-edit-width {
+    width: 20px !important;
+}
+
+.home-module-header {
+    color: black !important;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.home-module-item {
+    font-size: 18px;
+    text-decoration: none;
+    color: black !important;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100px;
+}
+
+.home-module-item:hover {
+    text-decoration: underline;
+}
+
+.published {
+    color: white !important;
+    background-color: rgba(34,139,34, .4) !important;
+}
+
+.coming-up-item {
+    text-decoration: none;
+    color: #b30000 !important;
+}
+
+.coming-up-item:hover {
+    text-decoration: underline;
+}
+
+.size-12 {
+    font-size: 12px;
 }
