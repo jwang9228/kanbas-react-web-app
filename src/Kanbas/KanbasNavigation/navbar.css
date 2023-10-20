@@ -1,0 +1,60 @@
+.kanbas-red {
+    color: #b30000;
+}
+
+.kanbas-bg-gray {
+    color: gray;
+}
+
+.kanbas-bg-black {
+    background-color: black;
+}
+
+.navbar-height {
+    position:fixed;
+    height: 100%;
+    background: black;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.navbar-item,
+.navbar-item-selected {
+    transform: rotate(0); /* for stretched link */
+    background-color: black;
+    height: 65px;
+    font-size: 14px;
+    text-align: center;
+    padding: 7px;
+}
+
+.navbar-item-selected {
+    background-color: white;
+}
+
+.navbar-link,
+.navbar-link-selected {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-link-selected {
+    color: #b30000;
+}
+
+.navbar-link:hover {
+    color: white;
+}
+
+.navbar-link-selected:hover {
+    color: #b30000;
+}
+
+.navbar-link-text-size {
+    font-size: 15px;
+}
+
+.navbar-icon {
+    padding-top: 2px;
+}
+

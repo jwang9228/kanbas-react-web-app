@@ -1,0 +1,44 @@
+.kanbas-red {
+    color: #b30000;
+}
+
+.bars-button {
+    border: none !important;
+    background: transparent !important;
+}
+
+.focus:focus {
+    border-color: #b30000 !important;
+    box-shadow: 0 0 0 0.2rem rgba(179, 0, 0, 0.25) !important;
+}
+
+.section-header {
+    font-size: 20px;
+}
+
+.section-margin {
+    flex-grow: 1;
+    margin-top: 16px;
+    margin-left: 40px;
+    overflow: hidden;
+}
+
+.section-menu-link,
+.section-menu-link-selected {
+    color: #b30000;
+    text-decoration: none;
+}
+
+.section-menu-link-selected {
+    color: black;
+}
+
+.section-menu-link:hover {
+    color: #b30000;
+    text-decoration: underline;
+}
+
+.section-menu-link-selected:hover {
+    color: black;
+    text-decoration: underline;
+}

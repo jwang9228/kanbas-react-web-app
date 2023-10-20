@@ -1,0 +1,93 @@
+hr.custom-hr{
+    margin-right: 40px;
+}
+
+.container-margins {
+    margin-right: 20px;
+}
+
+.color-white {
+    color: white;
+}
+
+.color-black {
+    color: black;
+}
+
+.dashboard-margin {
+    flex-grow: 1;
+    margin-top: 14px;
+    margin-left: 110px;
+    margin-right: 40px;
+    overflow: hidden;
+}
+
+.dashboard-title {
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.dashboard-courses-margin {
+    margin-left: 10px;
+}
+
+.dashboard-published-courses {
+    font-size: 24px;
+    font-weight: 450;
+}
+
+.card-image {
+    position: relative;
+    border-radius: 0 !important;
+}
+
+.card-image-icon {
+    position: absolute;
+    top: 5px;
+    right: 0px;
+}
+
+.card-link {
+    text-decoration: none;
+    color: black;
+}
+
+.card-link:hover {
+    text-decoration: underline;
+    text-decoration-color: #b30000;
+    color: black;
+}
+
+.card-margins {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.card-button {
+    margin-left: -10px;
+    margin-bottom: -8px;
+}
+
+.dashboard-card-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: -5px;
+}
+
+.dashboard-card-course-num {
+    font-size: 18px;
+    font-weight: 350;
+    margin-top: 5px;
+}
+
+.dashboard-card-course-desc {
+    font-size: 14px;
+    font-weight: 350;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-top: 5px;
+}

@@ -1,0 +1,118 @@
+.add-assignment-btn {
+    color: white !important;
+    background-color: #b30000 !important;
+}
+
+.assignment-header {
+    text-decoration: none;
+    color: black !important;
+    font-weight: 500;
+}
+
+.assignment-header:hover {
+    text-decoration: none;
+    color: black !important;
+}
+
+.assignment-hover:hover {
+    background-color: rgba(135, 206, 235, .2);
+}
+
+.assignment-item-left-border {
+    border-left: 4px solid green !important;
+}
+
+.assignment-item-title {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.assignment-item-title:hover {
+    text-decoration: underline;
+}
+
+.assignment-description {
+    font-size: 14px;
+}
+
+.assignment-edit-description {
+    font-size: 18px;
+}
+
+.checkmark {
+    color: rgba(34,139,34, .6);
+}
+
+.published-container {
+    display: flex;
+    align-items: center;
+    color: green;
+}
+
+.center-text {
+    vertical-align: middle;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.table-layout {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.table-header {
+    vertical-align: middle;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.table-student-name {
+    color: #b30000 !important;
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.table-edit-width {
+    width: 20px !important;
+}
+
+.home-module-header {
+    color: black !important;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.home-module-item {
+    font-size: 18px;
+    text-decoration: none;
+    color: black !important;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100px;
+}
+
+.home-module-item:hover {
+    text-decoration: underline;
+}
+
+.published {
+    color: white !important;
+    background-color: rgba(34,139,34, .4) !important;
+}
+
+.coming-up-item {
+    text-decoration: none;
+    color: #b30000 !important;
+}
+
+.coming-up-item:hover {
+    text-decoration: underline;
+}
+
+.size-12 {
+    font-size: 12px;
+}
