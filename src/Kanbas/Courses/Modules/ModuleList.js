@@ -1,16 +1,24 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import db from "../../Database";
-import { Button, Dropdown, ButtonGroup, ListGroup, Row, Col } from 'react-bootstrap';
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addModule,
+  deleteModule,
+  updateModule,
+  setModule,
+} from "./modulesReducer";
+import { Button, Dropdown, ButtonGroup, ListGroup, Row, Col, Card} from 'react-bootstrap';
 import '../../Common/buttons.css'
 import '../../Common/modules.css'
-import { FaRegCircleCheck, FaCircleCheck, FaEllipsisVertical, FaPlus } from "react-icons/fa6";
+import { FaRegCircleCheck, FaEllipsisVertical, } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { TbGripVertical } from "react-icons/tb";
 
 function ModuleList() {
   const { courseId } = useParams();
-  const modules = db.modules;
+  const modules = useSelector((state) => state.modulesReducer.modules);
+  const module = useSelector((state) => state.modulesReducer.module);
+  const dispatch = useDispatch();
   return (
     <div>
         <div className="d-flex justify-content-end">
@@ -58,6 +66,40 @@ function ModuleList() {
             </Button>
         </div>
         <hr/>
+        <Card className="mb-4">
+            <Card.Body>
+                <label className="mb-1 ms-1 add-module-label">Module Name</label>
+                <input
+                    value={module.name}
+                    className="form-control mb-1"
+                    onChange={(e) =>
+                        dispatch(setModule({ ...module, name: e.target.value }))
+                    }
+                />
+                <label className="m-1 add-module-label">Module Description</label>
+                <textarea 
+                    value={module.description}
+                    className="form-control"
+                    onChange={(e) => dispatch(setModule({ ...module, description: e.target.value }))}
+                />
+                <div>
+                    <Button
+                        onClick={() => dispatch(addModule({ ...module, course: courseId }))}
+                        variant="light"
+                        size="sm"
+                        className="text-nowrap add-course-button mt-3 me-2">
+                        Add
+                    </Button>
+                    <Button
+                        onClick={() => dispatch(updateModule(module))}
+                        variant="light"
+                        size="sm"
+                        className="text-nowrap update-course-button mt-3 me-2">
+                        Update
+                    </Button>
+                </div>
+            </Card.Body>
+        </Card> 
         <div>
             {modules
                 .filter((module) => module.course === courseId)
@@ -68,22 +110,30 @@ function ModuleList() {
                             <TbGripVertical className="vertical-icon"/>
                             <Link to="." className="module-header">{module.name}</Link>
                         </Col>
-                        <Col className="mt-3">
+                        <Col className="me-2">
                             <div className="d-flex justify-content-end">
-                                <Button disabled variant="light" className="ms-1 module-header-button">
-                                    <FaCircleCheck className="checkmark"/>
+                                <Button
+                                    onClick={() => dispatch(setModule(module))}
+                                    variant="light"
+                                    size="sm"
+                                    className="text-nowrap edit-course-button mt-2 me-1">
+                                    Edit
                                 </Button>
-                                <Button variant="light" className="ms-1 module-header-button">
-                                    <FaPlus style={{ color: 'black' }} />
-                                </Button>
-                                <Button variant="light" className="ms-1 module-header-button">
-                                    <FaEllipsisVertical style={{ color: 'black' }} />
+                                <Button
+                                    onClick={() => dispatch(deleteModule(module._id))}
+                                    variant="light"
+                                    size="sm"
+                                    className="focus text-nowrap add-assignment-btn mt-2">
+                                    Delete
                                 </Button>
                             </div>
                         </Col>
                     </Row>
-                    <Row className="mb-2">
+                    <Row className="">
                         <div className="module-description">{module.description}</div>
+                    </Row>
+                    <Row className="mb-2">
+                        <div className="module-description">{module._id}</div>
                     </Row>
                 </ListGroup>
                 ))

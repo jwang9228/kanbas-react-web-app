@@ -91,3 +91,22 @@ hr.custom-hr{
     text-overflow: ellipsis;
     margin-top: 5px;
 }
+
+.add-course-label {
+    font-weight: 500;
+}
+
+.add-course-button {
+    color: white !important;
+    background-color: green !important;
+}
+
+.update-course-button {
+    color: white !important;
+    background-color: #1e90ff !important;
+}
+
+.edit-course-button {
+    color: black !important;
+    background-color: #FFC000 !important;
+}

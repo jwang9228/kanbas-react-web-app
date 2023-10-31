@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
-import db from "../Database";
 import './dashboard.css';
 import { Card, Button, Row, Col, Container} from "react-bootstrap";
-import { FaEllipsisVertical, FaRegPenToSquare } from "react-icons/fa6";
+import { FaEllipsisVertical } from "react-icons/fa6";
 
-function Dashboard() {
-    const courses = db.courses;
+function Dashboard({
+    courses, course, setCourse, addNewCourse, deleteCourse, updateCourse
+}) 
+{   
     return (
         <Container fluid>
             <div className="dashboard-margin">
@@ -14,8 +15,65 @@ function Dashboard() {
                     <div><hr/></div>
                 </div>
                 <div className="dashboard-courses-margin">
-                    <div class="dashboard-published-courses">Published Courses ({courses.length})</div>
+                    <div className="dashboard-published-courses">Published Courses ({courses.length})</div>
                     <div><hr/></div>
+                    <Card className="mb-4">
+                        <Card.Body>
+                            <Row className="d-flex flex-row flex-wrap mb-2">
+                                <Col>
+                                    <label className="mb-1 ms-1 add-course-label">Course Name</label>
+                                    <input
+                                        value={course.name}
+                                        className="form-control"
+                                        onChange={(e) => setCourse({ ...course, name: e.target.value })}
+                                    />
+                                </Col>
+                                <Col>
+                                    <label className="mb-1 ms-1 add-course-label">Course Number</label>
+                                    <input
+                                        value={course.number}
+                                        className="form-control"
+                                        onChange={(e) => setCourse({ ...course, number: e.target.value })}
+                                    />
+                                </Col>
+                            </Row>
+                            <Row className="d-flex flex-row flex-wrap mb-2">
+                                <Col>
+                                    <label className="mb-1 ms-1 add-course-label">Start Date</label>
+                                    <input
+                                        value={course.startDate}
+                                        className="form-control"
+                                        type="date"
+                                        onChange={(e) => setCourse({ ...course, startDate: e.target.value })}
+                                    />
+                                </Col>
+                                <Col>
+                                    <label className="mb-1 ms-1 add-course-label">End Date</label>
+                                    <input
+                                        value={course.endDate}
+                                        className="form-control"
+                                        type="date"
+                                        onChange={(e) => setCourse({ ...course, endDate: e.target.value })}
+                                    />
+                                </Col>
+                            </Row>
+                            <Button
+                                onClick={addNewCourse}
+                                variant="light"
+                                size="sm"
+                                className="text-nowrap add-course-button mt-2 me-2">
+                                Add
+                            </Button>
+                            <Button
+                                onClick={updateCourse}
+                                variant="light"
+                                size="sm"
+                                className="text-nowrap update-course-button mt-2"
+                                style={{ backgroundColor: '#EDEDED' }}>
+                                Update
+                            </Button>
+                        </Card.Body>
+                    </Card> 
                     <Row className="d-flex flex-row flex-wrap">
                         {courses.map((course, index) => {
                             const { startDate, number, name } = course;
@@ -38,11 +96,26 @@ function Dashboard() {
                                                 <div className="dashboard-card-course-num">{courseNumberFull}</div>
                                                 <div className="dashboard-card-course-desc">{courseDescription}</div>
                                             </Link>
-                                            <Link to={`/Kanbas/Courses/${course._id}`}>
-                                                <Button className="btn card-button" variant="link">
-                                                    <FaRegPenToSquare className="color-black" size={20}/>
-                                                </Button>
-                                            </Link>
+                                            <Button
+                                                onClick={(event) => {
+                                                    event.preventDefault();
+                                                    setCourse(course);
+                                                }}
+                                                variant="light"
+                                                size="sm"
+                                                className="text-nowrap edit-course-button mt-2 me-1">
+                                                Edit
+                                            </Button>
+                                            <Button
+                                                onClick={(event) => {
+                                                    event.preventDefault();
+                                                    deleteCourse(course._id);
+                                                }}
+                                                variant="light"
+                                                size="sm"
+                                                className="focus text-nowrap add-assignment-btn mt-2">
+                                                Delete
+                                            </Button>
                                         </Card.Body>
                                     </Card>
                                 </Col>

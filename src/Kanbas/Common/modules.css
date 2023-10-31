@@ -35,3 +35,8 @@
 .checkmark {
     color: rgba(34,139,34, .6);
 }
+
+.add-module-label {
+    font-weight: 500;
+    font-size: 16px;
+}
