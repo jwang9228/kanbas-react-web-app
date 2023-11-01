@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { Button, Row, Col, InputGroup, FormControl, ListGroup, Modal } from 'react-bootstrap';
 import '../../Common/buttons.css';
 import '../../Common/modules.css';
@@ -7,14 +7,15 @@ import './assignments.css';
 import { FaPenToSquare } from 'react-icons/fa6';
 import { FaCircleCheck, FaEllipsisVertical, FaPlus } from "react-icons/fa6";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteAssignment } from "./assignmentsReducer";
+import { deleteAssignment, setAssignment } from "./assignmentsReducer";
 
 function Assignments() {
     const { courseId } = useParams();
+    const navigate = useNavigate();
     const assignments = useSelector((state) => state.assignmentsReducer.assignments);
     const dispatch = useDispatch();
     const courseAssignments = assignments.filter((assignment) => assignment.course === courseId);
-    const [selectedAssignment, setSelectedAssignment] = useState({title: 'test'});
+    const [selectedAssignment, setSelectedAssignment] = useState({title: ''});
     const [showModal, setShowModal] = useState(false);
     const handleOpenModal = () => {
         setShowModal(true);
@@ -22,6 +23,18 @@ function Assignments() {
     const handleCloseModal = () => {
         setShowModal(false);
     };
+    const formatDate = (dateStr) => {
+        const date = new Date(dateStr.replace(/-/g, '/'));
+        const options = { month: "long", day: "numeric" };
+        return date.toLocaleDateString("en-US", options);
+    }
+    const newAssignment = {
+        title: "New Assignment", 
+        description: "New Assignment Description",
+        dueDate: "2023-09-18",
+        availableFromDate: "2023-09-11",
+        availableUntilDate: "2023-09-18"
+    }
 
     return (
         <div>
@@ -41,7 +54,12 @@ function Assignments() {
                     </Button>
                     <Button
                         variant="light"
-                        className="focus text-nowrap ms-1 add-assignment-btn">
+                        className="focus text-nowrap ms-1 add-assignment-btn"
+                        onClick={() => { 
+                            const id = new Date().getTime().toString();
+                            navigate(`/Kanbas/Courses/${courseId}/Assignments/${id}`); 
+                            dispatch(setAssignment({...newAssignment, course: courseId, _id: id}));
+                        }}>
                         + Assignment
                     </Button>
                     <Button
@@ -79,15 +97,19 @@ function Assignments() {
                                 <Row>
                                     <Col className="col-auto mt-2 ms-1">
                                         <FaPenToSquare style={{ color: 'green' }} />
-                                        </Col>
-                                        <Col className="col-auto">
+                                    </Col>
+                                    <Col className="col-auto">
                                         <Link 
                                             to={`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`} 
-                                            className="assignment-header assignment-item-title ms-1">
+                                            className="assignment-header assignment-item-title ms-1"
+                                            onClick={() => dispatch(setAssignment(assignment))}>
                                             {assignment.title}
                                         </Link>
                                         <div className="row ms-1 assignment-description">
-                                            Multiple Modules | Due at 11:59pm | 100 pts
+                                            {assignment.description}
+                                        </div>
+                                        <div className="row ms-1 assignment-description">
+                                            Multiple Modules | Due {formatDate(assignment.dueDate)} at 11:59pm | 100 pts
                                         </div>
                                     </Col>
                                     <Col className="mt-1">
@@ -101,7 +123,6 @@ function Assignments() {
                                             <Button
                                                 onClick={() => {
                                                     handleOpenModal();
-                                                    console.log(assignment);
                                                     setSelectedAssignment(assignment);
                                                 }}
                                                 variant="light"
