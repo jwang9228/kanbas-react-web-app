@@ -83,6 +83,7 @@ function AssignmentEditor() {
                             <div>
                                 <input 
                                     type="date" 
+                                    className="form-control"
                                     style={{ width: '100%' }}
                                     value={assignmentDue}
                                     onChange={(e) => {
@@ -99,6 +100,7 @@ function AssignmentEditor() {
                                     <div>
                                         <input 
                                             type="date" 
+                                            className="form-control"
                                             style={{ width: '100%' }}
                                             value={availableFrom}
                                             onChange={(e) => {
@@ -115,6 +117,7 @@ function AssignmentEditor() {
                                     <div>
                                         <input 
                                             type="date" 
+                                            className="form-control"
                                             style={{ width: '100%' }}
                                             value={availableTo}
                                             onChange={(e) => {
