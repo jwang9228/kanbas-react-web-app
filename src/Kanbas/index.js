@@ -27,20 +27,22 @@ function Kanbas() {
         number: "RS6000",
         startDate: "2023-09-10", 
         endDate: "2023-12-15",
+        image: courseColors[0].image,
+        titleColor: courseColors[0].titleColor,
     });
+
     const addNewCourse = async () => {
+      const courseColor = courseColors[Math.floor(Math.random() * courseColors.length)];
+      setCourse({...course, image: courseColor.image, titleColor: courseColor.titleColor});
       const response = await axios.post(URL, course);
-      const courseColor = courseColors[Math.floor(Math.random() * courseColors.length)]
       setCourses(
           [...courses,
-          {...response.data,
-          image: courseColor.image,
-          titleColor: courseColor.titleColor}]
+          response.data]
       );
     };
     const deleteCourse = async (courseId) => {
       const response = await axios.delete(
-        `${URL}/${course._id}`
+        `${URL}/${courseId}`
       );
       setCourses(courses.filter((course) => course._id !== courseId));
     };
