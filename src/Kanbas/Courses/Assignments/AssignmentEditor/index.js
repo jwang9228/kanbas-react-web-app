@@ -10,6 +10,7 @@ import {
     setAssignment,
     updateAssignment,
 } from "../assignmentsReducer.js";
+import * as client from "../client";
 
 function AssignmentEditor() {
     const dispatch = useDispatch();
@@ -20,9 +21,23 @@ function AssignmentEditor() {
     const foundAssignment = assignments.find((assignment) => assignment._id === assignmentId);
     const navigate = useNavigate();
     const handleSave = () => {
-        dispatch(foundAssignment ? updateAssignment(assignment) : addAssignment(assignment));
+        foundAssignment
+        ? handleUpdateAssignment()
+        : handleAddAssignment()
         navigate(`/Kanbas/Courses/${courseId}/Assignments`);
     };
+
+    const handleAddAssignment = () => {
+        client.createAssignment(courseId, assignment).then((assignment) => {
+          dispatch(addAssignment(assignment));
+        });
+    };    
+
+    const handleUpdateAssignment = async () => {
+        const status = await client.updateAssignment(assignment);
+        dispatch(updateAssignment(assignment));
+    };
+
     const [assignmentTitle, setAssignmentTitle] = useState(assignment.title);
     const [assignmentDescription, setAssignmentDescription] = useState(assignment.description);
     const [assignmentDue, setAssignmentDue] = useState(assignment.dueDate);
@@ -50,10 +65,8 @@ function AssignmentEditor() {
                     value={assignmentTitle} 
                     className="form-control mb-3" 
                     onChange={(e) => {
-                        console.log('new title 4: ' + assignment.title);
                         setAssignmentTitle(e.target.value);
                         dispatch(setAssignment({ ...assignment, title: e.target.value }));
-                        console.log('new title 5: ' + assignment.title);
                     }}
                 />
                 <textarea 

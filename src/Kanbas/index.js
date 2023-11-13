@@ -3,10 +3,10 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import Courses from "./Courses";
 import { Container, Row, Col } from 'react-bootstrap';
-import db from "./Database";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import store from "./store";
 import { Provider } from "react-redux";
+import axios from "axios";
 
 function Kanbas() {
 	const courseColors = [
@@ -15,37 +15,54 @@ function Kanbas() {
         {"image": "../Images/light-purple.png", "titleColor": "#C3B1E1"},
         {"image": "../Images/pastel-green.png", "titleColor": "#03c03c"},
     ];
-    const [courses, setCourses] = useState(db.courses);
+    const [courses, setCourses] = useState([]);
+    const URL = "http://localhost:4000/api/courses";
+    const findAllCourses = async () => {
+      const response = await axios.get(URL);
+      setCourses(response.data);
+    };
+  
     const [course, setCourse] = useState({
         name: "Orbital Mechanics",      
         number: "RS6000",
         startDate: "2023-09-10", 
         endDate: "2023-12-15",
     });
-    const addNewCourse = () => {
-        const courseColor = courseColors[Math.floor(Math.random() * courseColors.length)]
-        setCourses(
-            [...courses,
-            {...course,
-            _id: new Date().getTime().toString(),
-            image: courseColor.image,
-            titleColor: courseColor.titleColor}]
-        );
+    const addNewCourse = async () => {
+      const response = await axios.post(URL, course);
+      const courseColor = courseColors[Math.floor(Math.random() * courseColors.length)]
+      setCourses(
+          [...courses,
+          {...response.data,
+          image: courseColor.image,
+          titleColor: courseColor.titleColor}]
+      );
     };
-    const deleteCourse = (courseId) => {
-        setCourses(courses.filter((course) => course._id !== courseId));
+    const deleteCourse = async (courseId) => {
+      const response = await axios.delete(
+        `${URL}/${course._id}`
+      );
+      setCourses(courses.filter((course) => course._id !== courseId));
     };
-    const updateCourse = () => {
+    const updateCourse = async () => {
+		const response = await axios.put(
+			`${URL}/${course._id}`,
+			course
+		);
         setCourses(
           courses.map((c) => {
             if (c._id === course._id) {
-              return course;
+              return response.data;
             } else {
               return c;
             }
           })
         );
-    };    
+    };
+    useEffect(() => {
+      findAllCourses();
+    }, []);
+
 	return (
     <Provider store={store}>
       <Container fluid className="p-0 overflow-hidden">

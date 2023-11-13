@@ -6,6 +6,8 @@ import { Button, Row, Col, Container, Breadcrumb, BreadcrumbItem } from "react-b
 import { HiBars3 } from "react-icons/hi2";
 import { FaGlasses } from "react-icons/fa6";
 import { Link, Navigate, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import CourseNavigation from "./CourseNavigation";
 import Modules from "./Modules";
 import Home from "./Home";
@@ -14,11 +16,32 @@ import AssignmentEditor from "./Assignments/AssignmentEditor";
 
 function Courses({ courses }) {
     const { courseId } = useParams();
-    const course = courses.find((course) => course._id === courseId);
-    const {number, startDate} = course;
-    const [startYear, startMonth, startDay] = startDate.split("-");
-    const courseTitle = `${number}.${startYear}${startDay}`;
-    const courseDescription = `${startYear}${startMonth}_${startDay} Fall ${startYear} Semester Full Term`;
+
+    const URL = "http://localhost:4000/api/courses";
+    const findCourseById = async (courseId) => {
+        const response = await axios.get(
+          `${URL}/${courseId}`
+        );
+        setCourse(response.data);
+    };
+    
+    const [course, setCourse] = useState({});
+    const [courseTitle, setCourseTitle] = useState("");
+    const [courseDescription, setCourseDescription] = useState("");
+
+    const getCourseTitle = async (courseId) => {
+        const response = await axios.get(
+            `${URL}/${courseId}/title`
+        );
+        setCourseTitle(response.data);
+    }
+    const getCourseDescription = async (courseId) => {
+        const response = await axios.get(
+            `${URL}/${courseId}/description`
+        );
+        setCourseDescription(response.data);
+    }
+
     const location = useLocation();
     const currentURL = location.pathname;
     const urlSegments = currentURL.split('/');
@@ -28,6 +51,12 @@ function Courses({ courses }) {
         // replace hyphens with spaces
         return text.replace(/-/g, ' ');
     };
+
+    useEffect(() => {
+        findCourseById(courseId);
+        getCourseTitle(courseId);
+        getCourseDescription(courseId);
+    }, [courseId]);
 
     return (
         <Container>

@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -6,7 +7,9 @@ import {
   deleteModule,
   updateModule,
   setModule,
+  setModules,
 } from "./modulesReducer";
+import * as client from "./client";
 import { Button, Dropdown, ButtonGroup, ListGroup, Row, Col, Card} from 'react-bootstrap';
 import '../../Common/buttons.css'
 import '../../Common/modules.css'
@@ -19,6 +22,31 @@ function ModuleList() {
   const modules = useSelector((state) => state.modulesReducer.modules);
   const module = useSelector((state) => state.modulesReducer.module);
   const dispatch = useDispatch();
+
+  const handleAddModule = () => {
+    client.createModule(courseId, module).then((module) => {
+      dispatch(addModule(module));
+    });
+  };
+
+  const handleDeleteModule = (moduleId) => {
+    client.deleteModule(moduleId).then((status) => {
+      dispatch(deleteModule(moduleId));
+    });
+  };
+
+  const handleUpdateModule = async () => {
+    const status = await client.updateModule(module);
+    dispatch(updateModule(module));
+  };
+
+
+  useEffect(() => {
+    client.findModulesForCourse(courseId)
+      .then((modules) =>
+        dispatch(setModules(modules))
+    );
+  }, [courseId]);
   return (
     <div>
         <div className="d-flex justify-content-end">
@@ -84,14 +112,14 @@ function ModuleList() {
                 />
                 <div>
                     <Button
-                        onClick={() => dispatch(addModule({ ...module, course: courseId }))}
+                        onClick={handleAddModule}
                         variant="light"
                         size="sm"
                         className="text-nowrap add-course-button mt-3 me-2">
                         Add
                     </Button>
                     <Button
-                        onClick={() => dispatch(updateModule(module))}
+                        onClick={handleUpdateModule}
                         variant="light"
                         size="sm"
                         className="text-nowrap update-course-button mt-3 me-2">
@@ -120,7 +148,7 @@ function ModuleList() {
                                     Edit
                                 </Button>
                                 <Button
-                                    onClick={() => dispatch(deleteModule(module._id))}
+                                    onClick={() => handleDeleteModule(module._id)}
                                     variant="light"
                                     size="sm"
                                     className="focus text-nowrap add-assignment-btn mt-2">

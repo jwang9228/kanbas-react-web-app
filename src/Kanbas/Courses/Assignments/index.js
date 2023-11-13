@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { Button, Row, Col, InputGroup, FormControl, ListGroup, Modal } from 'react-bootstrap';
 import '../../Common/buttons.css';
@@ -7,7 +8,8 @@ import './assignments.css';
 import { FaPenToSquare } from 'react-icons/fa6';
 import { FaCircleCheck, FaEllipsisVertical, FaPlus } from "react-icons/fa6";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteAssignment, setAssignment } from "./assignmentsReducer";
+import { deleteAssignment, setAssignment, setAssignments } from "./assignmentsReducer";
+import * as client from "./client";
 
 function Assignments() {
     const { courseId } = useParams();
@@ -35,6 +37,29 @@ function Assignments() {
         availableFromDate: "2023-09-11",
         availableUntilDate: "2023-09-18"
     }
+
+    const [assignmentTitle, setAssignmentTitle] = useState("");
+    const [assignmentDescription, setAssignmentDescription] = useState("");
+
+    const getAssignmentTitle = async (courseId) => {
+        const response = await axios.get(
+            `${URL}/${courseId}/title`
+        );
+        setAssignmentTitle(response.data);
+    }
+
+    const handleDeleteAssignment = (assignmentId) => {
+        client.deleteAssignment(assignmentId).then((status) => {
+          dispatch(deleteAssignment(assignmentId));
+        });
+    };
+
+    useEffect(() => {
+        client.findAssignmentsForCourse(courseId)
+          .then((assignments) =>
+            dispatch(setAssignments(assignments))
+        );
+    }, [courseId]);
 
     return (
         <div>
@@ -147,7 +172,7 @@ function Assignments() {
                                                     </Button>
                                                     <Button
                                                         onClick={() => {
-                                                            dispatch(deleteAssignment(selectedAssignment._id));
+                                                            handleDeleteAssignment(selectedAssignment._id);
                                                             handleCloseModal();
                                                         }}
                                                         variant="light"
