@@ -11,7 +11,7 @@ import Signup from "./users/signup";
 import Account from "./users/account";
 import UserTable from "./users/table"
 import axios from "axios";
-const API_BASE = process.env.REACT_APP_API_BASE;
+const API_BASE = process.env.REACT_APP_API_BASE_A6;
 
 function Kanbas() {
 	const courseColors = [
