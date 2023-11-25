@@ -2,13 +2,16 @@ import { Link, useLocation } from "react-router-dom";
 import './navbar.css';
 import { TfiDashboard } from "react-icons/tfi";
 import { FaBook, FaEnvelopeOpenText, FaDisplay, 
-    FaArrowRightFromBracket, FaRegCircleQuestion, FaRegCircleUser
+    FaArrowRightFromBracket, FaRegCircleQuestion, FaRegCircleUser, 
 } from "react-icons/fa6";
-import { FaCalendarAlt } from "react-icons/fa"
+import { FaCalendarAlt, FaSignInAlt } from "react-icons/fa"
 import { AiOutlineClockCircle} from "react-icons/ai"
+import { MdPeople } from "react-icons/md"
 
 function KanbasNavigation() {
     const links = [
+        { text: "Signin", icon: FaSignInAlt, iconSize: 28, iconColor: "kanbas-red"},
+        { text: "Signup", icon: MdPeople, iconSize: 28, iconColor: "kanbas-red"},
         { text: "Account", icon: FaRegCircleUser, iconSize: 30, iconColor: "kanbas-bg-gray" },
         { text: "Dashboard", icon: TfiDashboard, iconSize: 30, iconColor: "kanbas-red" },
         { text: "Courses", icon: FaBook, iconSize: 28, iconColor: "kanbas-red" },

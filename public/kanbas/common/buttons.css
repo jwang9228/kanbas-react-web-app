@@ -3,6 +3,11 @@
     background-color:#EDEDED !important;
 }
 
+.add-user-button {
+    border-color: white !important;
+    background-color: white !important;
+}
+
 .default-button:hover {
     color: black !important;
     background-color: #e0e0e0 !important;
